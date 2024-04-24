@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using UserCRUD.Data.Entities;
 
 namespace UserCRUD.Data
 {
@@ -7,6 +8,12 @@ namespace UserCRUD.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {  
+        }
+
+        public DbSet<User> Users { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
         }
     }
 }

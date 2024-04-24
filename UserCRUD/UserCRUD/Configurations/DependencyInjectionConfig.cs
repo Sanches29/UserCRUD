@@ -1,6 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
+using UserCRUD.Data.Entities;
+using UserCRUD.Data.Repositories.UserRepository;
+using UserCRUD.Domain.Models;
+using UserCRUD.Domain.Queries.Handlers;
+using UserCRUD.Domain.Queries.Request;
 
 namespace UserCRUD.Configurations
 {
@@ -23,6 +31,17 @@ namespace UserCRUD.Configurations
                     ? new CultureInfo(language!)
                     : CultureInfo.InvariantCulture;
             });
+
+            #region CommandHandlers
+            #endregion
+
+            #region QueryHandlers
+            services.AddScoped<IRequestHandler<GeAllUsersQuery, IEnumerable<User>>, GetAllUsersQueryHandler>();
+            #endregion
+
+            #region Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
+            #endregion
 
             return services;
         }

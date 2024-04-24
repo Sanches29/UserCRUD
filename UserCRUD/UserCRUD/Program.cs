@@ -26,7 +26,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDatabaseConfiguration(appSettings);
 builder.Services.AddMediatRConfiguration();
 builder.Services.DependencyInjection();
-builder.AddApiVersionConfiguration();
 builder.Services.AddSwaggerConfiguration();
 
 var app = builder.Build();
